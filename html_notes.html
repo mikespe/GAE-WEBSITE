@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+    Mike's Notes
+  </title>
+    <link rel="stylesheet" href="/static/css_for_note_website.css">
+</head>
+
+<body>
+<h1> 
+  Mike's Notes 
+  </h1>
+  <div>
+  <h2 class=head>
+    Servers
+   </h2>
+    <p>
+      The purpose of the server is to respond to http requests.
+the browser speaks http to the servers to request documents.
+2 classifications of responses servers can do. static and dynamic.
+static is pre written file the server returns. 
+dynamic is made on the fly. most of the content online is dynamic.
+web applications are essentially dynamic responses from servers.
+The GET method requests data from a specified resource. The paramaters
+of the GET are in  the url, and there is a relatively small limit 
+(2000 characters usually), used for fetching documents, consiidered
+ok to cache, and GET's are not used to change server
+POST submits data to be processed to a specified source. POST 
+parameters are in the body, and are used for updating data and 
+dont have a max length, or if they do, it can be a few megabytes
+depending on the server limit. POST are ok to cache and are used to change 
+the server
+
+  </p>
+</div>
+
+<div>
+    <h2 class=head>
+    The Importance of Validating Input 
+  </h2> 
+     <p>
+      validating input is to make sure the server
+can handle the inputs properly and that our
+website structure or security isn't compromised
+by clever internet goers. For example, if the user entered
+some html in the input space, they could potentially change
+the positioning of the webpage, the functionality of the webpage,
+or they could make the page crash all together and force an error message.
+Validating input  is also important to the user experience, if a user is being asked 
+for their birth date and accidentaly put 23 into the month category, 
+a clear error message popping up telling the user that the month is not valid
+would add to the websites ease of functionality, and make it a better,
+more user friendly website. The process of substituting user input that contains
+valid html that could potentially change the website is called 
+HTML escaping.
+    </p>
+  </div>
+  <div> 
+    <h2 class=head>
+      HTML Templates and Abstraction
+      </h2>
+    <p>
+      HTML templates are advantageous because it 
+minimizes the amnount of html you need to write,
+increasing efficiency as well as making the code
+more readable and easier to reuse with other
+information, all you need to do is switch what 
+data your using. This can be accomplished by adding
+loops to your html and using a string rendering tool like jinja2, 
+or by using Template Inheritance. Template inheritance
+is when you see a consistent top third of a website 
+that contains the complete header with navigation links, the title,
+and other important info. The bottom of the sight might might be 
+consistent as well, however the middle of the site might be dynamic
+and changing depending on what navigation links you click on. The middle
+dynamic content inheriting the top header and bottom would be an example of 
+Template inheritance, with the top and bottom being the consistent templates.
+</p>
+ <form method="post" action="/">
+<label>Comment</label><br><textarea name="comment" rows=5 cols=36></textarea><br>
+<input type="submit" value="submit comment">
+</form>
+{% if error %}
+  <div class="error">{{error}}</div>
+  {% endif %}
+  <a name="comments"></a>
+  {% for x in query %}
+  <ul>Anonymous wrote:<br>{{x.comment}}</ul>
+  {% endfor %}
+</body>
+<html>
